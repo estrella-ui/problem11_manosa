@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 1 (Age Group Classification)</title>
+    <style type="text/css">
+            body {
+            font-family: sans-serif;
+            margin: 40px;
+            background-color: beige;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: darkkhaki;
+        }
+
+        p {
+            font-size: 20px;
+            color: grey;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: darkolivegreen;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Age Group Classification</h1>
+    <p>Click the button below.</p>
+    <button onclick="classifyAge()">Click here:)</button>
+
+    <script>
+        function classifyAge() {
+            let continueClassification = true;
+
+            while (continueClassification) {
+                let ageInput;
+                while (true) {
+                    ageInput = prompt("Enter your age");
+                    if (ageInput === null) {
+                        alert("No input given. Exiting.");
+                        return;
+                    }
+
+                    ageInput = parseInt(ageInput, 10);
+                    if (!isNaN(ageInput) && ageInput >= 0) {
+                        break;
+                    }
+                    alert("Invalid input. Please enter a valid age.");
+                }
+
+                let ageGroup;
+                if (ageInput <= 12) {
+                    ageGroup = "Child";
+                } else if (ageInput <= 19) {
+                    ageGroup = "Teenager";
+                } else if (ageInput <= 64) {
+                    ageGroup = "Adult";
+                } else {
+                    ageGroup = "Senior";
+                }
+
+                alert(`Age: ${ageInput}\nCategory: ${ageGroup}`);
+
+                const userChoice = prompt("Do  you want to classify another age? Yes or No:").toLowerCase();
+                if (userChoice !== "yes") {
+                    continueClassification = false;
+                    alert("Thank you for using our program!:)");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
